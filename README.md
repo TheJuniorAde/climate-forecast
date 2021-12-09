@@ -13,7 +13,7 @@ Essa pequena aplicação tem como propósito mostrar a localização atual (apro
 
 Para instalar e executar o projeto, existem alguns passos:
 
- - [Configurar o `.env`](#configurar-o-.env)
+ - [Configurar o `.env`](#configurar-o-env)
  - [Instalar os pacotes](#instalar-os-pacotes)
  - [Executar a aplicação](#executar-a-aplicação)
 
