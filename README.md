@@ -191,7 +191,7 @@ Os dados retornados pela API de `climate forecast` estão no seguinte formato:
 Esse `custom hook` foi criado para gerenciar as chamadas e integrações entre a API de geolocation (`navigator.geolocation`), OpenWeather e MapQuest.
 |Parâmetro|Tipo|Descrição|
 |--|--|--|
-|callback|function|Função que recebe mensagens de sucesso ou erro ao executar as chamadas às integrações. Assinatura: `(sucess: boolean, data: string | any) =>  void`
+|callback|function|Função que recebe mensagens de sucesso ou erro ao executar as chamadas às integrações. Assinatura: `(sucess: boolean, data: string) =>  void`
 |apiUrl|string|URL da API do OpenWeather
 |appKey|string|Chave de API do OpenWeather
 |locationAppKey|string|Chave de API do MapQuest
@@ -226,7 +226,7 @@ Essa verificação foi baseada no seguinte trecho, e adaptada para funcionar com
 
 > **Nota:** Esse *polyfill* está disponível e descrito dentro de `src/geoLocationPolyfill.ts`
 
-Enquanto a calibração ocorre, uma mensagem é exibida informando que a calibração está em andamento (ver mais em [Mensagens](#mensagens)
+Enquanto a calibração ocorre, uma mensagem é exibida informando que a calibração está em andamento (ver mais em [Mensagens](#mensagens))
 
 ### Mensagens
 
@@ -249,4 +249,4 @@ Existem ainda duas mensagens que não estão dentro do arquivo `src/messages/ind
 |Mensagem|Utilização|
 |--|--|
 |Erro ao carregar os seus dados de localização: `erroemstring`|Mensagem de exceção da integração do MapQuest|
-|Erro ao carregar os dados climáticos da sua região: `erroemstring|Mensagem de exceção da integração do OpenWeather
+|Erro ao carregar os dados climáticos da sua região: `erroemstring|Mensagem de exceção da integração do OpenWeather|
