@@ -169,9 +169,9 @@ Os dados retornados pela API de `climate forecast` estão no seguinte formato:
 |visibility|number|Distância de visibilidade (em metros)
 |weather|object[]|Array de objetos, contendo as informações sobre o clima atual
 |weather[n].description|string|Condição climática dentro do grupo (descrito em `weather[n].main`)
-|weather[n].icon|string|Código do ícone relativo à condição climática atual (mais em [OpenWeatherAPI - Icons](https://openweathermap.org/weather-conditions)
+|weather[n].icon|string|Código do ícone relativo à condição climática atual (mais em [OpenWeatherAPI - Icons](https://openweathermap.org/weather-conditions))
 |weather[n].id|number|Identificador de condição climática
-|weather[n].main|string|Grupo de parâmetros climáticos (chuvoso, tempestuoso, etc). Mais em [OpenWeatherAPI - Condition Codes](https://openweathermap.org/weather-conditions)
+|weather[n].main|string|Grupo de parâmetros climáticos (chuvoso, tempestuoso, etc). Mais em [OpenWeatherAPI - Condition Codes](https://openweathermap.org/weather-conditions))
 |wind|object|Dados gerais sobre as condições do vento para previsão
 |wind.deg|number|Direção do vento (em graus)
 |wind.gust|number|Velocidade de rajadas do vento (em `m/s`)
