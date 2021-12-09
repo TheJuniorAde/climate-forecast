@@ -117,7 +117,7 @@ Os dados retornados pela API de `reverse geocoding` estão no seguinte formato:
 |results[n].locations[n].adminArea1|string|Nome do País
 |results[n].locations[n].adminArea1Type|string|Descrição do tipo de informação
 |results[n].locations[n].postalCode|string|Código postal do ponto aproximado
-|results[n].locations[n].geocodeQualityCode|string|Código de qualidade do `geocode` (mais em [MapQuest - Quality Codes](https://developer.mapquest.com/documentation/geocoding-api/quality-codes/)
+|results[n].locations[n].geocodeQualityCode|string|Código de qualidade do `geocode` (mais em [MapQuest - Quality Codes](https://developer.mapquest.com/documentation/geocoding-api/quality-codes/))
 |results[n].locations[n].geocodeQuality|string|Descrição de qualidade do `geocode`
 |results[n].locations[n].dragPoint|boolean|Localização é um `dragPoint`? (não é utilizada nas requisições feitas pela aplicação)
 |results[n].locations[n].sideOfStreet|string|Lado da rua, podendo ser L (esquerda), R (direita), M (misto) ou N (nenhum)
