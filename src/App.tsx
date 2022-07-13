@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import "./App.css";
-import { WeatherForecast } from "./components/WeatherForecast";
+import { WeatherForecast } from "./components";
 
 const theme = createTheme();
 

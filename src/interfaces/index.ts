@@ -1,10 +1,7 @@
-export interface WeatherForecastProps {
-  callback: (sucess: boolean, data: string | any) => void;
-  apiUrl: string;
-  appKey: string;
-  locationAppKey: string;
-  locationApiUrl: string;
-}
+export type WeatherForecastCallback = (
+  sucess: boolean,
+  data: string | any
+) => void;
 
 export interface WeatherForecastDataProps {
   currentLocation: GeolocationPosition["coords"] | undefined;

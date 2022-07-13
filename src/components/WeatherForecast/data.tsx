@@ -5,33 +5,25 @@ import {
   Card,
   CardContent,
   Typography,
-  SxProps,
-  Theme,
   CardHeader,
   Avatar,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { WeatherForecastDataProps } from "../../interfaces";
-import { red } from "@mui/material/colors";
+import {
+  getIconUrl,
+  defaultStyle,
+  flexGrowStyle,
+  redColorStyle,
+} from "./utils";
 
-const defaultStyle: SxProps<Theme> = {
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-};
-
-export const WeatherForecastData = ({
+export const Data: React.FC<WeatherForecastDataProps> = ({
   mustShow,
   currentForecast,
   currentLocation,
   currentLocationAddress,
-}: WeatherForecastDataProps) => {
-  if (
-    !mustShow ||
-    !currentForecast ||
-    !currentLocation ||
-    !currentLocationAddress
-  ) {
+}) => {
+  if (!mustShow) {
     return null;
   }
 
@@ -43,10 +35,10 @@ export const WeatherForecastData = ({
             <CardHeader
               title={`Localização (aproximada)`}
               subheader={`precisão: ${Number(
-                currentLocation.accuracy
+                currentLocation?.accuracy
               ).toLocaleString("pt-br")}m`}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
+            <CardContent sx={flexGrowStyle}>
               <Typography>
                 {`${currentLocationAddress?.street}, ${currentLocationAddress?.adminArea3} - ${currentLocationAddress?.adminArea1}`}
               </Typography>
@@ -57,41 +49,39 @@ export const WeatherForecastData = ({
           <Card sx={defaultStyle}>
             <CardHeader
               avatar={
-                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                <Avatar sx={redColorStyle} aria-label="recipe">
                   <img
-                    src={
-                      process.env.REACT_APP_OPENWEATHER_ICON_URL +
-                      currentForecast.weather[0].icon +
-                      "@2x.png"
-                    }
+                    src={getIconUrl(currentForecast!)}
+                    alt="Ícone do clima"
                   />
                 </Avatar>
               }
-              title={`Temperatura em ${currentForecast.name}`}
+              title={`Temperatura em ${currentForecast?.name}`}
               subheader={`${String(
-                currentForecast.weather[0].description
+                currentForecast?.weather[0].description
               ).toUpperCase()},
-        nuvens: ${currentForecast.clouds.all}%`}
+        nuvens: ${currentForecast?.clouds.all}%`}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
+            <CardContent sx={flexGrowStyle}>
               <Typography>
-                Atual: {currentForecast.main.temp}&deg; C<br />
-                Sensação térmica: {currentForecast.main.feels_like}&deg; C<br />
-                Mínima: {currentForecast.main.temp_min}&deg; C<br />
-                Máxima: {currentForecast.main.temp_max}&deg; C<br />
+                Atual: {currentForecast?.main.temp}&deg; C<br />
+                Sensação térmica: {currentForecast?.main.feels_like}&deg; C
+                <br />
+                Mínima: {currentForecast?.main.temp_min}&deg; C<br />
+                Máxima: {currentForecast?.main.temp_max}&deg; C<br />
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        {currentForecast.rain && (
+        {currentForecast?.rain && (
           <Grid item xs={12} sm={6} md={6}>
             <Card sx={defaultStyle}>
               <CardHeader title={`Chuva`} subheader={`Dados gerais da chuva`} />
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={flexGrowStyle}>
                 <Typography>
-                  Precipitação (1h): {currentForecast.rain["1h"]}mm
+                  Precipitação (1h): {currentForecast?.rain["1h"]}mm
                   <br />
-                  Precipitação (3h): {currentForecast.rain["3h"]}mm
+                  Precipitação (3h): {currentForecast?.rain["3h"]}mm
                   <br />
                 </Typography>
               </CardContent>
@@ -103,9 +93,9 @@ export const WeatherForecastData = ({
             <CardHeader
               avatar={
                 <Avatar
-                  sx={{ bgcolor: red[500] }}
+                  sx={redColorStyle}
                   style={{
-                    transform: `rotate(${currentForecast.wind.deg}deg)`,
+                    transform: `rotate(${currentForecast?.wind.deg}deg)`,
                   }}
                   aria-label="recipe"
                 >
@@ -115,11 +105,11 @@ export const WeatherForecastData = ({
               title={`Ventos`}
               subheader={`Dados gerais dos ventos`}
             />
-            <CardContent sx={{ flexGrow: 1 }}>
+            <CardContent sx={flexGrowStyle}>
               <Typography>
-                Direção: {currentForecast.wind.deg}&deg;
+                Direção: {currentForecast?.wind.deg}&deg;
                 <br />
-                Velocidade: {currentForecast.wind.speed}m/s
+                Velocidade: {currentForecast?.wind.speed}m/s
                 <br />
               </Typography>
             </CardContent>

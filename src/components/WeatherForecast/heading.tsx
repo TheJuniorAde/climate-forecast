@@ -2,12 +2,12 @@ import React from "react";
 import { Typography, Stack, Button } from "@mui/material";
 import { WeatherForecastHeadingProps } from "../../interfaces";
 
-export const WeatherForecastHeading = ({
+export const Heading: React.FC<WeatherForecastHeadingProps> = ({
   isWaiting,
   isLoading,
   loadLocation,
   message,
-}: WeatherForecastHeadingProps) => (
+}) => (
   <React.Fragment>
     <Typography
       component="h1"

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { Box, Snackbar, Container } from "@mui/material";
-import { useWeather } from "./useWeather";
-import { WeatherForecastData } from "./WeatherForecastData";
-import { WeatherForecastHeading } from "./WeatherForecastHeading";
-import { Messages } from "../../messages";
+import React, { useCallback, useState } from "react";
+import { Box, Container } from "@mui/material";
+import { Heading } from "./heading";
+import { Data } from "./data";
+import { mustShow } from "./utils";
+import { Snack } from "../snack";
+import { getActionMessage } from "../../messages";
+import { useWeather } from "../../hooks";
 
-export const WeatherForecast = () => {
+export const WeatherForecast: React.FC = () => {
   const [snack, setSnack] = useState("");
 
   const handleWeatherForecast = (success: boolean, data: string | any) => {
@@ -28,40 +30,28 @@ export const WeatherForecast = () => {
     currentLocationCoordinates,
     currentLocationAddress,
     loadLocation,
-  } = useWeather({
-    callback: handleWeatherForecast,
-    apiUrl: String(process.env.REACT_APP_OPENWEATHER_API_URL),
-    appKey: String(process.env.REACT_APP_OPENWEATHER_API_KEY),
-    locationAppKey: String(process.env.REACT_APP_MAPQUEST_KEY),
-    locationApiUrl: String(process.env.REACT_APP_MAPQUEST_URL),
-  });
+  } = useWeather(handleWeatherForecast);
 
   const isLoading = !!loading && !!availableLocation;
-
   const isWaiting = !!loading && !availableLocation;
-  const mustShow =
-    !loading &&
-    !!availableLocation &&
-    !!currentLocationAddress &&
-    !!currentForecast;
 
-  const getActionMessage = () => {
-    let message = Messages.RELOAD_CLIMATE_DATE;
-
-    if (isLoading) {
-      message = Messages.LOADING;
-    }
-
-    if (isWaiting) {
-      message = Messages.LOADING_GEOLOCATION_DATA;
-    }
-
-    if (!availableLocation) {
-      message = Messages.WAITING_GEOLOCATION;
-    }
-
-    return message;
-  };
+  const mustShowData = useCallback(
+    () =>
+      mustShow(
+        loading,
+        availableLocation,
+        currentLocationAddress,
+        currentForecast,
+        currentLocationCoordinates
+      ),
+    [
+      loading,
+      availableLocation,
+      currentLocationAddress,
+      currentForecast,
+      currentLocationCoordinates,
+    ]
+  );
 
   return (
     <Box
@@ -72,22 +62,19 @@ export const WeatherForecast = () => {
       }}
     >
       <Container maxWidth="md">
-        <WeatherForecastHeading
+        <Heading
           isWaiting={isWaiting}
           isLoading={isLoading}
           loadLocation={loadLocation}
-          message={getActionMessage()}
+          message={getActionMessage(isLoading, isWaiting, availableLocation)}
         />
-        <WeatherForecastData
+        <Data
           currentForecast={currentForecast}
           currentLocationAddress={currentLocationAddress}
           currentLocation={currentLocationCoordinates}
-          mustShow={mustShow}
+          mustShow={mustShowData()}
         />
-        <Snackbar
-          open={!!snack || !!isWaiting}
-          message={snack || Messages.WAITING_GEOLOCATION}
-        />
+        <Snack show={isWaiting} message={snack} />
       </Container>
     </Box>
   );

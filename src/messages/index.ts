@@ -11,3 +11,5 @@ export enum Messages {
   GEOLOCATION_INVALID_KEY = "Chave de API do MapQuest inválida!",
   GEOLOCATION_UNEXPECTED = "Ocorreu um erro inesperado!",
 }
+
+export * from "./utils";
