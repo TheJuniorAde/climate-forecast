@@ -12,7 +12,7 @@ import {
   handleLocationRequestError,
   Messages,
 } from "../messages";
-import { LocationApi, WeatherApi } from "../services";
+import { LocationService, WeatherService } from "../services";
 
 export const useWeather = (callback: WeatherForecastCallback) => {
   const [loading, setLoading] = useState(true);
@@ -35,8 +35,8 @@ export const useWeather = (callback: WeatherForecastCallback) => {
 
   const loadReverseGeocodePosition = async (lat: number, lng: number) => {
     try {
-      const { retrieve } = LocationApi();
-      const { data } = await retrieve(lat, lng);
+      const service = new LocationService();
+      const { data } = await service.retrieve(lat, lng);
 
       if (data.info.statuscode === 0) {
         setCurrentLocationAddress(data.results[0].locations[0]);
@@ -50,8 +50,8 @@ export const useWeather = (callback: WeatherForecastCallback) => {
 
   const loadWeatherForecast = async () => {
     try {
-      const { retrieve } = WeatherApi();
-      const { data } = await retrieve(currentLocationCoordinates);
+      const service = new WeatherService();
+      const { data } = await service.retrieve(currentLocationCoordinates);
 
       setCurrentForecast(data);
       callback(true, data);

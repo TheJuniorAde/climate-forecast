@@ -1,18 +1,20 @@
 import { MapQuestResponse } from "../interfaces";
-import { createInstance } from "./api";
+import { BaseService } from "./base";
 
-export const LocationApi = () => {
-  const apiUrl = String(process.env.REACT_APP_MAPQUEST_URL);
-  const apiKey = String(process.env.REACT_APP_MAPQUEST_KEY);
-  const api = createInstance(apiUrl);
+export class LocationService extends BaseService {
+  public apiUrl = String(process.env.REACT_APP_MAPQUEST_URL);
+  private apiKey = String(process.env.REACT_APP_MAPQUEST_KEY);
 
-  return {
-    retrieve: async (lat: number, lng: number) =>
-      await api.get<MapQuestResponse>(apiUrl, {
-        params: {
-          key: apiKey,
-          location: `${lat},${lng}`,
-        },
-      }),
-  };
-};
+  constructor() {
+    super();
+  }
+
+  async retrieve(lat: number, lng: number) {
+    return await this.api.get<MapQuestResponse>(this.apiUrl, {
+      params: {
+        key: this.apiKey,
+        location: `${lat},${lng}`,
+      },
+    });
+  }
+}

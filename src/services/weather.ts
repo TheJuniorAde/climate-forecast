@@ -1,23 +1,23 @@
 import { OpenWeatherApiResponse } from "../interfaces";
-import { createInstance } from "./api";
+import { BaseService } from "./base";
 
-export const WeatherApi = () => {
-  const apiUrl = String(process.env.REACT_APP_OPENWEATHER_API_URL);
-  const appid = String(process.env.REACT_APP_OPENWEATHER_API_KEY);
-  const api = createInstance(apiUrl);
+export class WeatherService extends BaseService {
+  public apiUrl = String(process.env.REACT_APP_OPENWEATHER_API_URL);
+  private appid = String(process.env.REACT_APP_OPENWEATHER_API_KEY);
 
-  return {
-    retrieve: async (
-      currentLocationCoordinates?: GeolocationPosition["coords"]
-    ) =>
-      await api.get<OpenWeatherApiResponse>(apiUrl, {
-        params: {
-          appid,
-          lat: currentLocationCoordinates?.latitude,
-          lon: currentLocationCoordinates?.longitude,
-          units: "metric",
-          lang: "pt_br",
-        },
-      }),
-  };
-};
+  constructor() {
+    super();
+  }
+
+  async retrieve(currentLocationCoordinates?: GeolocationPosition["coords"]) {
+    return await this.api.get<OpenWeatherApiResponse>(this.apiUrl, {
+      params: {
+        appid: this.appid,
+        lat: currentLocationCoordinates?.latitude,
+        lon: currentLocationCoordinates?.longitude,
+        units: "metric",
+        lang: "pt_br",
+      },
+    });
+  }
+}
