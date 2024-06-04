@@ -7,8 +7,8 @@ import {
   Typography,
 } from "@mui/material"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { defaultStyle, flexGrowStyle, redColorStyle } from "../utils"
-import { WeatherForecastContext } from ".."
+import { defaultStyle, flexGrowStyle, redColorStyle } from "../../utils"
+import { WeatherForecastContext } from "../.."
 
 export const Wind: React.FC = () => {
   const { currentForecast } = useContext(WeatherForecastContext)

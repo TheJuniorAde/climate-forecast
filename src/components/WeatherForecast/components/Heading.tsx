@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Typography, Stack, Button } from "@mui/material"
-import { WeatherForecastContext } from "."
-import { getActionMessage } from "../../messages"
+import { WeatherForecastContext } from ".."
+import { getActionMessage } from "../../../messages"
 
 export const Heading: React.FC = () => {
   const { isWaiting, isLoading, loadLocation, isLocationAvailable } =

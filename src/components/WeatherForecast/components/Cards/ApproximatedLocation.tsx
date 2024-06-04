@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { Card, CardContent, CardHeader, Typography } from "@mui/material"
-import { defaultStyle, flexGrowStyle } from "../utils"
-import { WeatherForecastContext } from ".."
+import { defaultStyle, flexGrowStyle } from "../../utils"
+import { WeatherForecastContext } from "../.."
 
 export const ApproximatedLocation: React.FC = () => {
   const { currentLocationCoordinates, currentLocationAddress } = useContext(

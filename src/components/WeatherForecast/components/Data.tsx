@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { Container, Grid } from "@mui/material"
-import { WeatherForecastContext } from "."
+import { WeatherForecastContext } from ".."
 import { ApproximatedLocation, Rain, Temperature, Wind } from "./Cards"
 
 export const Data: React.FC = () => {

@@ -11,8 +11,8 @@ import {
   flexGrowStyle,
   getIconUrl,
   redColorStyle,
-} from "../utils"
-import { WeatherForecastContext } from ".."
+} from "../../utils"
+import { WeatherForecastContext } from "../.."
 
 export const Temperature: React.FC = () => {
   const { currentForecast } = useContext(WeatherForecastContext)

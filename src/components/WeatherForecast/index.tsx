@@ -1,9 +1,8 @@
 import React, { createContext, useMemo, useState } from "react"
 import { Box, Container } from "@mui/material"
-import { Heading } from "./Heading"
-import { Data } from "./Data"
+import { Data, Heading } from "./components"
 import { defaultWheaterForecastContext, mustShow } from "./utils"
-import { Snack } from "../Snack"
+import { SnackMessage } from "../SnackMessage"
 import { useWeather } from "../../hooks"
 import { WheaterForecastContextResult } from "../../interfaces"
 
@@ -81,7 +80,7 @@ export const WeatherForecast: React.FC = () => {
           <Heading />
           <Data />
         </WeatherForecastContext.Provider>
-        <Snack show={isWaiting} message={snack} />
+        <SnackMessage show={isWaiting} message={snack} />
       </Container>
     </Box>
   )
