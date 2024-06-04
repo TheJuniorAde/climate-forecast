@@ -1,12 +1,12 @@
-import { MapQuestResponse } from "../interfaces";
-import { BaseService } from "./base";
+import { MapQuestResponse } from "../interfaces"
+import { BaseService } from "./BaseService"
 
 export class LocationService extends BaseService {
-  public apiUrl = String(process.env.REACT_APP_MAPQUEST_URL);
-  private apiKey = String(process.env.REACT_APP_MAPQUEST_KEY);
+  public apiUrl = String(process.env.REACT_APP_MAPQUEST_URL)
+  private apiKey = String(process.env.REACT_APP_MAPQUEST_KEY)
 
   constructor() {
-    super();
+    super()
   }
 
   async retrieve(lat: number, lng: number) {
@@ -15,6 +15,6 @@ export class LocationService extends BaseService {
         key: this.apiKey,
         location: `${lat},${lng}`,
       },
-    });
+    })
   }
 }

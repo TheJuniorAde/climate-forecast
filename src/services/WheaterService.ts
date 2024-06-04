@@ -1,12 +1,12 @@
-import { OpenWeatherApiResponse } from "../interfaces";
-import { BaseService } from "./base";
+import { OpenWeatherApiResponse } from "../interfaces"
+import { BaseService } from "./BaseService"
 
 export class WeatherService extends BaseService {
-  public apiUrl = String(process.env.REACT_APP_OPENWEATHER_API_URL);
-  private appid = String(process.env.REACT_APP_OPENWEATHER_API_KEY);
+  public apiUrl = String(process.env.REACT_APP_OPENWEATHER_API_URL)
+  private appid = String(process.env.REACT_APP_OPENWEATHER_API_KEY)
 
   constructor() {
-    super();
+    super()
   }
 
   async retrieve(currentLocationCoordinates?: GeolocationPosition["coords"]) {
@@ -18,6 +18,6 @@ export class WeatherService extends BaseService {
         units: "metric",
         lang: "pt_br",
       },
-    });
+    })
   }
 }

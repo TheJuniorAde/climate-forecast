@@ -191,17 +191,13 @@ Os dados retornados pela API de `climate forecast` estão no seguinte formato:
 Esse `custom hook` foi criado para gerenciar as chamadas e integrações entre a API de geolocation (`navigator.geolocation`), OpenWeather e MapQuest.
 |Parâmetro|Tipo|Descrição|
 |--|--|--|
-|callback|function|Função que recebe mensagens de sucesso ou erro ao executar as chamadas às integrações. Assinatura: `(sucess: boolean, data: string) =>  void`
-|apiUrl|string|URL da API do OpenWeather
-|appKey|string|Chave de API do OpenWeather
-|locationAppKey|string|Chave de API do MapQuest
-|locationApiUrl|string|URL da API de `reverse geocoding` do MapQuest
+|callback|function|Função que recebe mensagens de sucesso ou erro ao executar as chamadas às integrações. Assinatura: `(success: boolean, data: string) =>  void`
 
 #### Retorno da função
 |Parâmetro|Tipo|Descrição|
 |--|--|--|
 |loading|boolean|Indica se o hook está carregando informações
-|availableLocation|boolean|Indica se a localização está disponível para a aplicação
+|isLocationAvailable|boolean|Indica se a localização está disponível para a aplicação
 |currentLocationCoordinates|object|Objeto contendo as coordenadas geográficas fornecidas pela API de Geolocation (`navigator.geolocation`). Formato: `GeolocationPosition["coords"]`
 |currentForecast|object|Objeto contendo as informações climáticas da integração com o OpenWeatherAPI. Formato descrito na interface [`OpenWeatherApiResponse`](#integração-com-openweatherapi)
 |currentLocationAddress|object|Objeto contendo as informações de localização fornecidas pela integração com o MapQuest. Formato descrito na interface [`MapQuestLocation`](#integração-com-mapquest)
@@ -249,4 +245,4 @@ Existem ainda duas mensagens que não estão dentro do arquivo `src/messages/ind
 |Mensagem|Utilização|
 |--|--|
 |Erro ao carregar os seus dados de localização: `erroemstring`|Mensagem de exceção da integração do MapQuest|
-|Erro ao carregar os dados climáticos da sua região: `erroemstring|Mensagem de exceção da integração do OpenWeather|
+|Erro ao carregar os dados climáticos da sua região: `erroemstring`|Mensagem de exceção da integração do OpenWeather|

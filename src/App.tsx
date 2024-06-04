@@ -1,16 +1,15 @@
-import React from "react";
-import { ThemeProvider } from "@mui/system";
+import React from "react"
+import { ThemeProvider } from "@mui/system"
 import {
   AppBar,
   createTheme,
   CssBaseline,
   Toolbar,
   Typography,
-} from "@mui/material";
-import "./App.css";
-import { WeatherForecast } from "./components";
+} from "@mui/material"
+import { WeatherForecast } from "./components"
 
-const theme = createTheme();
+const theme = createTheme()
 
 function App() {
   return (
@@ -27,7 +26,7 @@ function App() {
         <WeatherForecast />
       </main>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App

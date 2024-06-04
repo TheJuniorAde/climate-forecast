@@ -12,4 +12,4 @@ export enum Messages {
   GEOLOCATION_UNEXPECTED = "Ocorreu um erro inesperado!",
 }
 
-export * from "./utils";
+export * from "./utils"
